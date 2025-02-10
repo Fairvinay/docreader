@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html dir="ltr" mozdisallowselectionprint>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="google" content="notranslate">
+  <title>PDF js demo</title>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+ <link rel="stylesheet" href="fileup.css">
+	<link href="app.css" rel="stylesheet">
+ <script type="text/javascript"> 
+$('#chooseFile').bind('change', function () {
+  var filename = $("#chooseFile").val();
+  if (/^\s*$/.test(filename)) {
+    $(".file-upload").removeClass('active');
+    $("#noFile").text("No file chosen..."); 
+  }
+  else {
+    $(".file-upload").addClass('active');
+    $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+  }
+});
+
+ </script>
+</head>
+
+<body tabindex='1'>
+
+<div class="file-upload">
+  <div class="file-select">
+    <div class="file-select-button" id="fileName">Choose File</div>
+    <div class="file-select-name" id="noFile">No file chosen...</div> 
+    <input type="file" name="chooseFile" id="chooseFile">
+  </div>
+</div>
+
+<!-- IGNORE -->
+<div class="copyright">
+  By <a href="http://storenotify.in">StoreNotify.in</a>.
+</div>
+
+</body>
+</html>

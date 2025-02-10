@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html dir="ltr" mozdisallowselectionprint>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="google" content="notranslate">
+  <title>PDF.js viewer using built components</title>
+
+  <style>
+    .todown { 
+      display:inline-block;
+      color:#444;
+      border:1px solid #CCC;
+      background:#DDD;
+      box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+      cursor:pointer;
+      vertical-align:middle;
+      max-width: 100px;
+      padding: 5px;
+      text-align: center;
+    }
+    body {
+      background-color: #808080;
+      margin: 0;
+      padding: 0;
+    }
+    #viewerContainer {
+      overflow: auto;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .pdfFixedDiv{
+     position: fixed;
+	 bottom: 10px;
+	 left: 40%;
+	}
+	button {
+  		background-color: #7C9DD6;
+  		border: none;
+  		color: white;
+  		padding: 8px;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 60%;
+	}
+	input {
+		padding: 7px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 50%;
+		width: 8%;
+	}
+	button:hover {
+		cursor: pointer;
+	}
+  </style>
+ <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+ <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script src="js/jspdf.min.js"></script>
+
+<script type="text/javascript">
+function demoFromHTML() {
+ var pdf = new jsPDF('p', 'pt', 'letter');
+ // source can be HTML-formatted string, or a reference
+ // to an actual DOM element from which the text will be scraped.
+ source =  " <%= serverfile %>" ;
+
+ // we support special element handlers. Register them with jQuery-style 
+ // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+ // There is no support for any other type of selectors 
+ // (class, of compound) at this time.
+ specialElementHandlers = {
+     // element with id of "bypass" - jQuery style selector
+     '#bypassme': function (element, renderer) {
+         // true = "handled elsewhere, bypass text extraction"
+         return true
+     }
+ };
+ margins = {
+     top: 80,
+     bottom: 60,
+     left: 40,
+     width: 522
+ };
+ // all coords and widths are in jsPDF instance's declared units
+ // 'inches' in this case
+ pdf.fromHTML(
+ source, // HTML string or DOM elem ref.
+ margins.left, // x coord
+ margins.top, { // y coord
+     'width': margins.width, // max width of content on PDF
+     'elementHandlers': specialElementHandlers
+ },
+
+ function (dispose) {
+     // dispose: object with X, Y of the last line add to the PDF 
+     //          this allow the insertion of new lines after html
+     pdf.save('Test.pdf');
+ }, margins);
+}
+
+</script>
+
+
+<div id="customers">
+    <table id="tab_customers" class="table table-striped">
+        <colgroup>
+            <col width="20%">
+                <col width="20%">
+                    <col width="20%">
+                        <col width="20%">
+        </colgroup>
+        <thead>
+            <tr class='warning'>
+                <th>Country</th>
+                <th>Population</th>
+                <th>Date</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calculta</td>
+                <td>1,363,480,000</td>
+                <td>March 24, 2024</td>
+                <td>19.1</td>
+            </tr>
+            <tr>
+                <td>Ahemdabad</td>
+                <td>1,241,900,000</td>
+                <td>March 24, 2024</td>
+                <td>17.4</td>
+            </tr>
+            <tr>
+                <td>Uttar Kanada</td>
+                <td>317,746,000</td>
+                <td>March 24, 2024</td>
+                <td>4.44</td>
+            </tr>
+            <tr>
+                <td>Indore</td>
+                <td>249,866,000</td>
+                <td>Jan 1, 2025</td>
+                <td>3.49</td>
+            </tr>
+            <tr>
+                <td>Buldhana</td>
+                <td>201,032,714</td>
+                <td>Feb 1, 2025</td>
+                <td>2.81</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button onclick="javascript:demoFromHTML();">PDF</button>

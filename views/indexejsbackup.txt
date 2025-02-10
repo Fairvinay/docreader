@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StoreIT</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="parent container d-flex justify-content-center align-items-center h-100">
+    <div class="child"> <!-- Your code goes inside this div/form -->
+        <!--  <div class="container col-sm-12" id="choose-files" oncopy="return false" oncut="return false" onpaste="return false">-->
+        <div class="row">
+      
+          <form action="/upload" method="post" enctype="multipart/form-data">
+               <!--   <b>File:</b> <input type="file" name="myFile" id="cashbackfiles"
+                  />
+                 <input class="btn btn-primary" type="submit" style="border-radius: 4px;" name="cashbackfiles" value="Upload">
+                  --> 
+                  <div class="card" style="width: 18rem;">
+                    <img src="download.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">File Upload</h5>
+                      <p class="card-text"> best possible file content, and display</p>
+                      <b>File:</b> <input type="file" name="myFile" id="cashbackfiles"
+                     />
+                     <input class="btn btn-primary" type="submit" style="border-radius: 4px;" name="cashbackfiles" value="Upload">
+                     <br> <br>
+                       <a href="#" class="btn btn-primary">View</a>
+                    </div>
+                  </div>
+          </form> <!-- multiple -->
+      
+         <!--    <br>--> 
+      
+          <!--   <form action="/upload" method="post" enctype="multipart/form-data">
+                <b>Large Files:</b> <input type="file" name="supercoinsfiles" id="supercoinsfile"
+               >
+                <button class="btn btn-primary" type="submit" style="border-radius: 4px;">Upload</button>
+             </form>
+            --><!-- multiple --> 
+        </div>
+     <!--  </div> --> 
+    
+    
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+</body>
+</html>

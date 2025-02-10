@@ -1,0 +1,128 @@
+
+    /* await FileDecrypt('./sample/52296986_DEC_2024_PaySlip.pdf', 
+          "./sample/node-decrypted.pdf", "Bench@123_123").then( er => {
+
+            res.send("./sample/node-decrypted.pdf")
+          }) .catch( err => { 
+          
+               console.log("FileDecrypt failed ", JSON.stringify(err))
+              // DEFAULT PDF 
+             res.send('pdf.pdf');
+             })   
+             *///'./sample/52296986_DEC_2024_PaySlip.pdf'
+
+  
+     /* let file = { url: refererUrl  };  // window.location.href  will not work 
+       
+      // html-topdf-node   https://www.npmjs.com/package/html-pdf-node
+       let options1 = { format: 'A4'  , path: "uploads"};    
+         html_to_pdf.generatePdf(file, options1).then(pdfBuffer => {
+             console.log("PDF Buffer:-", pdfBuffer);
+         });
+      */
+     
+
+
+
+
+ getTextFromPDF('uploads/'+filename).then(data => {  console.log(data)
+        pdfsource = data;
+             (async () => {
+
+              let options = {
+                displayHeaderFooter: true,
+                format: "A4",
+                headerTemplate: `<h3> Header </h3>`,
+                footerTemplate: `<h3> Copyright 2023 </h3>`,
+                margin: { top: "80px", bottom: "100px" },
+              };
+              
+              
+              var PDF = await pdfMaster.generatePdf('public/'+"decrypted.hbs",  data,options);
+             //  npm i --save base64topdf
+                fs.writeFileSync('./data.pdf', PDF , 'utf-8'); 
+                const filePath ='./data.pdf';
+                const stream = fs.createReadStream(filePath);
+                  res.writeHead(200, {
+                      'Content-disposition': 'attachment; filename="' + encodeURIComponent(path.basename(filePath))  + '"',
+                      'Content-type': 'application/pdf',
+                  });
+                  stream.pipe(res);
+                 // res.contentType("application/pdf");
+                 // res.status(200).send(PDF);
+
+              } )()
+            
+
+      //        const buff = new Buffer.from(data)
+      //         const base64pdf = buff.toString('base64')  // 'data:application/pdf;base64,' +
+             // console.log(base64pdf)
+           //   if(req.method == "GET"){
+                 //let data = convertDataURIToBinary("data:application/pdf;base64, " + pdfsource);
+                 //console.log("pdf data  "+data)  
+            //     res.render("data:application/pdf;base64, " + pdfsource );  
+           //   }
+
+       //    res.send(base64pdf)
+          /* ejs
+           .renderFile(path.join(__dirname, "views/dummyviewer.ejs"),
+           {
+             serverfile: pdfsource ,
+               
+           })
+           .then(result => {
+             emailTemplate = result; 
+             res.send(emailTemplate);
+           })
+           .catch(err => {
+             res.status(400).json({
+                 message: "Error File Display ",
+                 error: err
+               });
+             });
+        
+              */
+
+
+
+       })
+       .catch( err => { 
+    
+        res.render('bootstrapblank.ejs');
+       })   
+
+
+       
+     /*
+      var command = 'qpdf --decrypt --password='+password+' '+pdfsourcepath+' '+pdfdestinationpath+'';
+      
+     await exec(command, function (error){
+           if (error !== null){
+               console.log('exec error: ',error ); //+ error)
+            let tst = JSON.stringify(error);
+            console.log("json error "+tst);
+               let realPath  =   path.resolve("./"+pdfdestinationpath)
+               fs.existsSync( );
+            //fs.existsSync(path.join(__dirname, './'+pdfdestinationpath))// error.indexOf( "operation succeeded with") > -1 ;
+            if (realPath){
+              console.log('Your pdf is decrypted successfully.');
+              console.log('Your pdf is  '+pdfdestinationpath);
+              let basepath  = pdfdestinationpath.replace("uploads","");
+              res.send(basepath);
+            }
+         } 
+          else{
+          console.log('Your pdf is decrypted successfully.');
+          console.log('Your pdf is  '+pdfdestinationpath);
+          let basepath  = pdfdestinationpath.replace("uploads","");
+          res.send(basepath);
+          
+          }
+         }
+        );
+          */
+
+
+
+       // await decrypt.decrypt(options2);
+         // await qpdf.decrypt(serverabsfile, password , 'uploads/demo.pdf');

@@ -1,0 +1,37 @@
+{
+  "name": "docreader",
+  "version": "1.0.0",
+  "description": "document reader",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Vinayak",
+    "A"
+  ],
+  "author": "Vinayak A",
+  "license": "ISC",
+  "dependencies": {
+    "base64topdf": "^1.1.8",
+    "body-parser": "^1.20.3",
+    "canvas": "^3.1.0",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "html-pdf-node": "^1.0.8",
+    "multer": "^1.4.5-lts.1",
+    "node-html-parser": "^7.0.1",
+    "node-qpdf": "^1.0.3",
+    "node-qpdf2": "^6.0.0",
+    "path": "^0.12.7",
+    "pdf-master": "^1.1.0",
+    "pdfjs-dist": "^4.10.38",
+    "querystring": "^0.2.1",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/multer": "^1.4.12"
+  }
+}
